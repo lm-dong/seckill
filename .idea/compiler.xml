@@ -9,5 +9,8 @@
         <module name="seckill" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="webap" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
