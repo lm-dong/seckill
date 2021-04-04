@@ -7,6 +7,7 @@
     <%@include file="common/head.jsp" %>
 </head>
 <body>
+    <%-- 页面显示部分 --%>
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
@@ -38,7 +39,7 @@
                         <td>
                             <fmt:formatDate value="${sk.createdTime}" pattern="yyyy-MM-dd HH:mm:ss" />
                         </td>
-                        <td><a class="btn btn-info" href="/seckill/${sk.seckillId}/detail" target="_blank">详情</a></td>
+                        <td><a class="btn btn-info" href="/seckill/${sk.seckillId}/detail" target="_blank">detail</a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -48,12 +49,17 @@
     </div>
 </div>
 
-
-
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </body>
+
+<%-- jQuery文件。务必在bootstrap.min.js 之前引入 --%>
+<%-- <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script> --%>
+<%-- 最新的 Bootstrap 核心 JavaScript 文件 --%>
+<%-- <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script> --%>
+
+<%-- jQuery文件。务必在bootstrap.min.js 之前引入 --%>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+<%-- 最新的 Bootstrap 核心 JavaScript 文件 --%>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>

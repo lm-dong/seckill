@@ -23,7 +23,8 @@ import java.util.List;
  * date: 2021/4/2 10:49<br/>
  */
 @Controller // 放入spring容器
-@RequestMapping("/seckill") //url:模块/资源/{id}/细分
+//@RequestMapping("/seckill") //url:模块/资源/{id}/细分
+@RequestMapping
 public class SeckillController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -57,7 +58,7 @@ public class SeckillController {
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public SeckillResult<Exposer> exposer(Long seckillId){
+    public SeckillResult<Exposer> exposer(@PathVariable("seckillId") Long seckillId){
         SeckillResult<Exposer> result;
         try {
             Exposer exposer = seckillService.exportSeckillUrl(seckillId);
@@ -86,20 +87,21 @@ public class SeckillController {
         }catch (RepeatKillException e1)
         {
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }catch (SeckillCloseException e2)
         {
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStatEnum.END);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }
         catch (Exception e)
         {
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }
     }
 
     @RequestMapping(value = "/time/now",method = RequestMethod.GET)
+    @ResponseBody
     public SeckillResult<Long> time(){
         Date now = new Date();
         return new SeckillResult<Long>(true,now.getTime());
